@@ -1,6 +1,6 @@
 function flattenArray(arr){
     var result = arr.map(function(each){
-        if(typeof(each.length) === 'num'){
+        if(Array.isArray(each)){
             flattenArray(each)
         }else{
             return each
