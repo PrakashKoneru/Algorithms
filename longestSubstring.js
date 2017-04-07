@@ -1,26 +1,27 @@
 var lengthOfLongestSubstring = function(s) {
-    var result = [];
+     // a
+    var hash = {};
     var SS = s.split('');
-    var length = SS.length;
-    var currentIndex = 0,
-        max = 1;
-    
-    for (var i=currentIndex; i<length; i++){
-        if(result.indexOf(SS[i]) === -1){
-            result.push(SS[i])
+    var currentIndex = 0;
+    var str = ""
+    var i = 0;
+    max = 0;
+    while(i < SS.length){
+        if(!hash.hasOwnProperty("key" + SS[i])){
+            hash["key" + SS[i]] = 1;
+            str = str + SS[i];
+            i++;
         }else{
-            if(result.length>max){
-                max = result.length
-                console.log(max, result);
+            if(str.length > max){
+                max = str.length
             }
-            result = []
-            currentIndex += 1;
-            
+                currentIndex = currentIndex + 1;
+                str = "";
+                i = currentIndex;
+                hash = {};
         }
     }
     
     return max;
+    
 };
-
-
-lengthOfLongestSubstring("pwwkew");
